@@ -32,6 +32,7 @@
       "upiIdentifier": [
         "Dominos /PYTM/dominospiz"
       ],
+      "inbIdentifier": [],
       "expenseCategory": "Food"
     },
     {
@@ -40,6 +41,7 @@
       "upiIdentifier": [
         "PharmEasy/PYTM/pharmeasy1"
       ],
+      "inbIdentifier": [],
       "expenseCategory": "Medicine"
     },
     {
@@ -48,6 +50,7 @@
       "upiIdentifier": [
         "SUPR TEC/HDFC/suprdaily."
       ],
+      "inbIdentifier": [ "SUPR INFOTECH SOLUTIONS P--" ],
       "expenseCategory": "Food"
     },
     {
@@ -57,14 +60,26 @@
         "ZOMATO/HDFC/payzomato@",
         "Zomato/PYTM/zomato-ord"
       ],
+      "inbIdentifier": [],
+      "expenseCategory": "Food"
+    },
+    {
+      "name": "Swiggy",
+      "description": "Food Aggregator",
+      "upiIdentifier": [
+        "SWIGGY/ICIC/upiswiggy@"
+      ],
+      "inbIdentifier": [],
       "expenseCategory": "Food"
     },
     {
       "name": "Uber",
       "description": "Transport Service",
       "upiIdentifier": [
-        "UBER IND/UTIB/uber@axisb"
+        "UBER IND/UTIB/uber@axisb",
+        "UBER IND/HDFC/uberrides@"
       ],
+      "inbIdentifier": [],
       "expenseCategory": "Transport"
     },
     {
@@ -73,14 +88,18 @@
       "upiIdentifier": [
         "OLACABS/UTIB/olacabs1@a"
       ],
+      "inbIdentifier": [],
       "expenseCategory": "Transport"
     },
     {
       "name": "Licious",
       "description": "Non veg food aggregator",
       "upiIdentifier": [
-        "LICIOUS/UTIB/licious.rz"
+        "LICIOUS/UTIB/licious.rz",
+        "razorpay/ICIC/razorpay@i",
+        "RAZORPAY/HDFC/razorpay.l"
       ],
+      "inbIdentifier": [],
       "expenseCategory": "Food"
     },
     {
@@ -89,6 +108,7 @@
       "upiIdentifier": [
         "Urbanclap/PYTM/paytm-urba"
       ],
+      "inbIdentifier": [],
       "expenseCategory": "Utility"
     },
     {
@@ -97,6 +117,7 @@
       "upiIdentifier": [
         "dunzo/UTIB/dunzo.payu"
       ],
+      "inbIdentifier": [],
       "expenseCategory": "Food"
     },
     {
@@ -111,6 +132,7 @@
         "BODDU /KKBK/madhavbodd",
         "BODDU   /KKBK/madhavbodd"
       ],
+      "inbIdentifier": [],
       "expenseCategory": "Food"
     },
     {
@@ -118,9 +140,10 @@
       "description": "Supermarket online",
       "upiIdentifier": [
         "Reliance/INDB/jiomart.pa",
-        "Reliance/INDB/jiomart.pa",
-        "JIOMART /HDFC/jiomart.pa"
+        "JIOMART /HDFC/jiomart.pa",
+        "jiomart/UTIB/jiomart.pa",
       ],
+      "inbIdentifier": [],
       "expenseCategory": "Food"
     },
     {
@@ -129,6 +152,7 @@
       "upiIdentifier": [
         "Zerodha /HDFC/zerodhabro"
       ],
+      "inbIdentifier": [],
       "expenseCategory": "Investments"
     },
     {
@@ -137,6 +161,16 @@
       "upiIdentifier": [
         "NAMAN JAIN/HDFC/nj250296@o"
       ],
+      "inbIdentifier": [],
+      "expenseCategory": "Friend"
+    },
+    {
+      "name": "Savi Soni",
+      "description": "Savi Soni",
+      "upiIdentifier": [
+        "SAVI SON/BARB/sonisavi19"
+      ],
+      "inbIdentifier": [],
       "expenseCategory": "Friend"
     }
   ]

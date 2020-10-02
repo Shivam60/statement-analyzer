@@ -6,5 +6,6 @@
         public string description { get; set; }
         public string expenseCategory { get; set; }
         public string[] upiIdentifier { get; set; }
+        public string[] inbIdentifier { get; set; }
     }
 }

@@ -23,16 +23,22 @@ namespace statement_analyzer.Controllers
         }
 
         [HttpGet]
-        public dynamic Get()
+        [Route("getSummary")]
+        public dynamic GetSummary()
         {
             HSSFWorkbook hssfwb;
-            using (FileStream file = new FileStream(Path.Combine(Environment.CurrentDirectory, "1601643806906lAGkzP0qRHbsL0T8.xls"), FileMode.Open, FileAccess.Read))
+            using (FileStream file = new FileStream(Path.Combine(Environment.CurrentDirectory, "1601675837424Ko3KrO6VYnJMpFhB.xls"), FileMode.Open, FileAccess.Read))
             {
                 hssfwb = new HSSFWorkbook(file);
             }
             List<SbiStatement> respList = new List<SbiStatement>();
-            ISheet sheet = hssfwb.GetSheet("Sheet1");
-            for (int row = 1; row <= sheet.LastRowNum; row++)
+            ISheet sheet = hssfwb.GetSheet("1601675837424Ko3KrO6VYnJMpFhB");
+            for (int row = sheet.FirstRowNum; row <= 19; row++)
+            {
+                sheet.RemoveRow(sheet.GetRow(row));
+            }
+
+            for (int row = sheet.FirstRowNum; row <= sheet.LastRowNum-2; row++)
             {
                 if (sheet.GetRow(row) != null) //null is when the row only contains empty cells 
                 {
@@ -47,22 +53,24 @@ namespace statement_analyzer.Controllers
                     respList.Add(a);
                 }
             }
-            var resp = new Dictionary<string, double>();
-            var resp2 = new Dictionary<string, double>();
-            respList.ForEach((row) =>
-            {
-                string businessName = statementRowRepositary.findBusiness(row.Description);
-                if (businessName != null)
-                {
-                    resp[businessName] = resp.ContainsKey(businessName) ? resp[businessName] + row.Debit : row.Debit;
-                }
-                else
-                {
-                    resp2[StatementRowRepositary.findUpiIdentifier(row.Description)] = row.Debit;
-                }
-            });
-            return resp2;
+            var resp = statementRowRepositary.GetExpenditureSummary(respList);
+            return resp;
         }
+
+        [HttpGet]
+        [Route("getKnownBusinesses")]
+        public dynamic GetKnownBusinesses()
+        {
+            return statementRowRepositary.getKnownBusinessess();
+        }
+
+        [HttpPost]
+        [Route("setKnownBusinesses")]
+        public dynamic SetKnownBusinesses(Business business)
+        {
+            return statementRowRepositary.getKnownBusinessess();
+        }
+
 
         private dynamic getValue(ICell cell)
         {
