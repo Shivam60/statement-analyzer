@@ -1,37 +1,29 @@
-﻿using System;
-using NPOI.SS.UserModel;
-
-namespace statement_analyzer.ModelClasses
+﻿namespace statement_analyzer.ModelClasses
 {
-    public class SbiStatement
+    using NPOI.SS.UserModel;
+    using statement_analyzer.Utils;
+    public class SbiStatement : Statement
     {
-        private dynamic _Description;
-        public dynamic TxnDate { get; set; }
-        public dynamic ValueDate { get; set; }
-        public dynamic Description 
-        { 
-            get { return _Description; }
-            set { _Description = value.Trim(); }
-        }
-        public string RefNo { get; set; }
-        public double Debit { get; set; }
-        public double Credit { get; set; }
-        public double Balance { get; set; }
-
         public SbiStatement(dynamic TxnDate, dynamic ValueDate, dynamic Description, dynamic RefNo, dynamic Debit, dynamic Credit, dynamic Balance)
         {
             this.TxnDate = TxnDate;
             this.ValueDate = ValueDate;
             this.Description = Description;
             this.RefNo = RefNo;
-            this.Debit = SbiStatement.GetNumberSafe(Debit);
-            this.Credit = SbiStatement.GetNumberSafe(Credit);
-            this.Balance = SbiStatement.GetNumberSafe(Balance);
+            this.Debit = Statement.GetNumberSafe(Debit);
+            this.Credit = Statement.GetNumberSafe(Credit);
+            this.Balance = Statement.GetNumberSafe(Balance);
         }
 
-        private static double GetNumberSafe(dynamic value)
+        public SbiStatement(IRow sbiStatementRow)
         {
-            return value.GetType() == "".GetType() ? 0 : Convert.ToDouble(value);
+            this.TxnDate = NpoiUtils.GetCellValueSafe(sbiStatementRow.GetCell(0));
+            this.ValueDate = NpoiUtils.GetCellValueSafe(sbiStatementRow.GetCell(1));
+            this.Description = NpoiUtils.GetCellValueSafe(sbiStatementRow.GetCell(2));
+            this.RefNo = NpoiUtils.GetCellValueSafe(sbiStatementRow.GetCell(3));
+            this.Debit = GetNumberSafe(NpoiUtils.GetCellValueSafe(sbiStatementRow.GetCell(4)));
+            this.Credit = GetNumberSafe(NpoiUtils.GetCellValueSafe(sbiStatementRow.GetCell(5)));
+            this.Balance = GetNumberSafe(NpoiUtils.GetCellValueSafe(sbiStatementRow.GetCell(6)));
         }
     }
 }

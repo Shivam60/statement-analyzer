@@ -1,16 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using NPOI.SS.UserModel;
-using statement_analyzer.ModelClasses;
-using NPOI.HSSF.UserModel;
-using statement_analyzer.Repositary;
-using statement_analyzer.Repositary.Interface;
-
-namespace statement_analyzer.Controllers
+﻿namespace statement_analyzer.Controllers
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using Microsoft.AspNetCore.Mvc;
+    using NPOI.SS.UserModel;
+    using statement_analyzer.ModelClasses;
+    using NPOI.HSSF.UserModel;
+    using statement_analyzer.Repositary.Interface;
+
     [ApiController]
     [Route("[controller]")]
     public class HomeController : ControllerBase
@@ -26,13 +24,14 @@ namespace statement_analyzer.Controllers
         [Route("getSummary")]
         public dynamic GetSummary()
         {
+            var sheetName = "sbi";
             HSSFWorkbook hssfwb;
-            using (FileStream file = new FileStream(Path.Combine(Environment.CurrentDirectory, "1601675837424Ko3KrO6VYnJMpFhB.xls"), FileMode.Open, FileAccess.Read))
+            using (FileStream file = new FileStream(Path.Combine(Environment.CurrentDirectory, $"{sheetName}.xls"), FileMode.Open, FileAccess.Read))
             {
                 hssfwb = new HSSFWorkbook(file);
             }
-            List<SbiStatement> respList = new List<SbiStatement>();
-            ISheet sheet = hssfwb.GetSheet("1601675837424Ko3KrO6VYnJMpFhB");
+            List<Statement> respList = new List<Statement>();
+            ISheet sheet = hssfwb.GetSheetAt(0);
             for (int row = sheet.FirstRowNum; row <= 19; row++)
             {
                 sheet.RemoveRow(sheet.GetRow(row));
@@ -42,19 +41,56 @@ namespace statement_analyzer.Controllers
             {
                 if (sheet.GetRow(row) != null) //null is when the row only contains empty cells 
                 {
-                    var a = new SbiStatement(
-                        this.getValue(sheet.GetRow(row).GetCell(0)),
-                        this.getValue(sheet.GetRow(row).GetCell(1)),
-                        this.getValue(sheet.GetRow(row).GetCell(2)),
-                        this.getValue(sheet.GetRow(row).GetCell(3)),
-                        this.getValue(sheet.GetRow(row).GetCell(4)),
-                        this.getValue(sheet.GetRow(row).GetCell(5)),
-                        this.getValue(sheet.GetRow(row).GetCell(6)));
-                    respList.Add(a);
+                    try
+                    {
+                        var a = new SbiStatement(sheet.GetRow(row));
+                        respList.Add(a);
+                    }
+                    catch (Exception e)
+                    {
+                        // to do
+                    }
                 }
             }
             var resp = statementRowRepositary.GetExpenditureSummary(respList);
             return resp;
+        }
+
+        [HttpGet]
+        [Route("getSummaryHDFC")]
+        public dynamic GetSummaryH()
+        {
+            var sheetName = "hdfc";
+            HSSFWorkbook hssfwb;
+            using (FileStream file = new FileStream(Path.Combine(Environment.CurrentDirectory, $"{sheetName}.xls"), FileMode.Open, FileAccess.Read))
+            {
+                hssfwb = new HSSFWorkbook(file);
+            }
+            List<HdfcStatement> respList = new List<HdfcStatement>();
+            ISheet sheet = hssfwb.GetSheetAt(0);
+            for (int row = sheet.FirstRowNum; row <= 20; row++)
+            {
+                sheet.RemoveRow(sheet.GetRow(row));
+            }
+            sheet.RemoveRow(sheet.GetRow(21));
+
+            for (int row = sheet.FirstRowNum; row <= sheet.LastRowNum - 17; row++)
+            {
+                if (sheet.GetRow(row) != null) //null is when the row only contains empty cells 
+                {
+                    try
+                    {
+                        var a = new HdfcStatement(sheet.GetRow(row));
+                        respList.Add(a);
+                    }
+                    catch (Exception e)
+                    {
+                        // to do
+                    }
+                }
+            }
+            //var resp = statementRowRepositary.GetExpenditureSummary(respList);
+            return respList;
         }
 
         [HttpGet]

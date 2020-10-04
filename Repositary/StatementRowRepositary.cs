@@ -63,7 +63,7 @@
             return string.Join(" ", description.Split(" ").Skip(2).Take(4));
         }
 
-        public Dictionary<string, Dictionary<string, double>> GetExpenditureSummary(List<SbiStatement> respList)
+        public Dictionary<string, Dictionary<string, double>> GetExpenditureSummary(List<Statement> respList)
         {
             var resp = new Dictionary<string, Dictionary<string, double>>();
             var expenditureSummary = new Dictionary<string, double>();

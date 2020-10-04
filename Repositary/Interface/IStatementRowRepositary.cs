@@ -8,7 +8,7 @@
     {
         bool DoesDescriptionMatchInIdentifiers(string description, string[] upiIdentifiers);
         string findBusinessFromUpi(string description);
-        Dictionary<string, Dictionary<string, double>> GetExpenditureSummary(List<SbiStatement> respList);
+        Dictionary<string, Dictionary<string, double>> GetExpenditureSummary(List<Statement> respList);
         Business[] getKnownBusinessess();
     }
 }

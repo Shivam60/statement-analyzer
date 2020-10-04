@@ -1,24 +1,24 @@
-﻿<Properties StartupConfiguration="{D1587750-6067-488B-9362-33E98EA187CB}|Default">
+﻿<Properties GitUserInfo="UsingGIT" StartupConfiguration="{D1587750-6067-488B-9362-33E98EA187CB}|Default">
   <MonoDevelop.Ide.Workbench>
     <Files>
-      <File FileName="Controllers/HomeController.cs" Line="57" Column="25" />
-      <File FileName="Repositary/StatementRowRepositary.cs" Line="4" Column="23" />
-      <File FileName="Repositary/Interface/IStatementRowRepositary.cs" Line="12" Column="16" />
-      <File FileName="Data/database.json" Line="145" Column="9" />
-      <File FileName="ModelClasses/Database.cs" Line="1" Column="1" />
+      <File FileName="Controllers/HomeController.cs" Line="1" Column="1" />
+      <File FileName="Repositary/StatementRowRepositary.cs" Line="66" Column="99" />
+      <File FileName="Repositary/Interface/IStatementRowRepositary.cs" Line="11" Column="92" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="statement-analyzer" expanded="True">
             <Node name="statement-analyzer" expanded="True">
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="HomeController.cs" selected="True" />
+              </Node>
               <Node name="Data" expanded="True" />
-              <Node name="ModelClasses" expanded="True" />
+              <Node name="Properties" expanded="True" />
               <Node name="Repositary" expanded="True">
                 <Node name="Interface" expanded="True" />
-                <Node name="StatementRowRepositary.cs" selected="True" />
               </Node>
+              <Node name="Utils" expanded="True" />
             </Node>
           </Node>
         </State>

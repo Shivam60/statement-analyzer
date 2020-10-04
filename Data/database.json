@@ -58,7 +58,9 @@
       "description": "Food Aggregator",
       "upiIdentifier": [
         "ZOMATO/HDFC/payzomato@",
-        "Zomato/PYTM/zomato-ord"
+        "Zomato/PYTM/zomato-ord",
+        "Zomato/UTIB/zomato.ord",
+        "Zomato/HDFC/zomato@hdf"
       ],
       "inbIdentifier": [],
       "expenseCategory": "Food"
@@ -67,7 +69,8 @@
       "name": "Swiggy",
       "description": "Food Aggregator",
       "upiIdentifier": [
-        "SWIGGY/ICIC/upiswiggy@"
+        "SWIGGY/ICIC/upiswiggy@",
+        "Swiggy/UTIB/swiggyupi@"
       ],
       "inbIdentifier": [],
       "expenseCategory": "Food"
@@ -97,7 +100,8 @@
       "upiIdentifier": [
         "LICIOUS/UTIB/licious.rz",
         "razorpay/ICIC/razorpay@i",
-        "RAZORPAY/HDFC/razorpay.l"
+        "RAZORPAY/HDFC/razorpay.l",
+        "Delightf/UTIB/licious@ab"
       ],
       "inbIdentifier": [],
       "expenseCategory": "Food"
@@ -150,7 +154,8 @@
       "name": "Zerodha",
       "description": "Mutual funds and investments",
       "upiIdentifier": [
-        "Zerodha /HDFC/zerodhabro"
+        "Zerodha /HDFC/zerodhabro",
+        "Zerodha/ICIC/zerodha.ra"
       ],
       "inbIdentifier": [],
       "expenseCategory": "Investments"
