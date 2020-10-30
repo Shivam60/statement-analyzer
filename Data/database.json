@@ -27,6 +27,15 @@
   ],
   "knownBusinesses": [
     {
+      "name": "Pizza Hut",
+      "description": "Food",
+      "upiIdentifier": [
+        "Pizza Hut/UTIB/pizzahut.r"
+      ],
+      "inbIdentifier": [],
+      "expenseCategory": "Food"
+    },
+    {
       "name": "Dominos",
       "description": "Food",
       "upiIdentifier": [
@@ -72,7 +81,7 @@
         "SWIGGY/ICIC/upiswiggy@",
         "Swiggy/UTIB/swiggyupi@"
       ],
-      "inbIdentifier": [],
+      "inbIdentifier": [ "Bundl technologies Pvt Lt--" ],
       "expenseCategory": "Food"
     },
     {
@@ -145,7 +154,7 @@
       "upiIdentifier": [
         "Reliance/INDB/jiomart.pa",
         "JIOMART /HDFC/jiomart.pa",
-        "jiomart/UTIB/jiomart.pa",
+        "jiomart/UTIB/jiomart.pa"
       ],
       "inbIdentifier": [],
       "expenseCategory": "Food"
@@ -177,6 +186,59 @@
       ],
       "inbIdentifier": [],
       "expenseCategory": "Friend"
+    },
+    {
+      "name": "Indian Oil",
+      "description": "Gas",
+      "upiIdentifier": [
+        "IndianOi/HDFC/indianoilo"
+      ],
+      "inbIdentifier": [],
+      "expenseCategory": "Utility"
+    },
+    {
+      "name": "Electricity",
+      "description": "Electricity",
+      "upiIdentifier": [
+        "Electric/PYTM/paypre-uti"
+      ],
+      "inbIdentifier": [],
+      "expenseCategory": "Utility"
+    },
+    {
+      "name": "GROFERS",
+      "description": "super market",
+      "upiIdentifier": [],
+      "inbIdentifier": [ "GROFERS INDIA PRIVATE LIM--" ],
+      "expenseCategory": "Food"
+    },
+    {
+      "name": "Airtel",
+      "description": "phone",
+      "upiIdentifier": [
+        "Bharti A/SBIN/bhartiairt"
+      ],
+      "inbIdentifier": [],
+      "expenseCategory": "Utility"
+    },
+    {
+      "name": "Hotstar",
+      "description": "Hotstar",
+      "upiIdentifier": [
+        "Hotstar/HDFC/hotstar.ra"
+      ],
+      "inbIdentifier": [],
+      "expenseCategory": "Utility"
+    },
+    {
+      "name": "Idea",
+      "description": "phone",
+      "upiIdentifier": [
+        "billdesk/ICIC/billdesk.i",
+        "EURONETG/ICIC/euronetgpa"
+      ],
+      "inbIdentifier": [],
+      "expenseCategory": "Utility"
     }
   ]
 }

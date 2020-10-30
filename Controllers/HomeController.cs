@@ -8,6 +8,7 @@
     using statement_analyzer.ModelClasses;
     using NPOI.HSSF.UserModel;
     using statement_analyzer.Repositary.Interface;
+    using System.Net;
 
     [ApiController]
     [Route("[controller]")]
@@ -24,7 +25,7 @@
         [Route("getSummary")]
         public dynamic GetSummary()
         {
-            var sheetName = "sbi";
+            var sheetName = "july-2020";
             HSSFWorkbook hssfwb;
             using (FileStream file = new FileStream(Path.Combine(Environment.CurrentDirectory, $"{sheetName}.xls"), FileMode.Open, FileAccess.Read))
             {
@@ -37,7 +38,7 @@
                 sheet.RemoveRow(sheet.GetRow(row));
             }
 
-            for (int row = sheet.FirstRowNum; row <= sheet.LastRowNum-2; row++)
+            for (int row = sheet.FirstRowNum; row <= sheet.LastRowNum - 2; row++)
             {
                 if (sheet.GetRow(row) != null) //null is when the row only contains empty cells 
                 {
@@ -60,13 +61,13 @@
         [Route("getSummaryHDFC")]
         public dynamic GetSummaryH()
         {
-            var sheetName = "hdfc";
+            var sheetName = "july";
             HSSFWorkbook hssfwb;
             using (FileStream file = new FileStream(Path.Combine(Environment.CurrentDirectory, $"{sheetName}.xls"), FileMode.Open, FileAccess.Read))
             {
                 hssfwb = new HSSFWorkbook(file);
             }
-            List<HdfcStatement> respList = new List<HdfcStatement>();
+            List<Statement> respList = new List<Statement>();
             ISheet sheet = hssfwb.GetSheetAt(0);
             for (int row = sheet.FirstRowNum; row <= 20; row++)
             {
@@ -89,37 +90,15 @@
                     }
                 }
             }
-            //var resp = statementRowRepositary.GetExpenditureSummary(respList);
-            return respList;
+            var resp = statementRowRepositary.GetExpenditureSummary(respList);
+            return resp;
         }
 
-        [HttpGet]
-        [Route("getKnownBusinesses")]
-        public dynamic GetKnownBusinesses()
+        [HttpPost("upload")]
+        public HttpStatusCode PostFile(StatementRequest request)
         {
-            return statementRowRepositary.getKnownBusinessess();
-        }
 
-        [HttpPost]
-        [Route("setKnownBusinesses")]
-        public dynamic SetKnownBusinesses(Business business)
-        {
-            return statementRowRepositary.getKnownBusinessess();
-        }
-
-
-        private dynamic getValue(ICell cell)
-        {
-            switch (cell.CellType)
-            {
-                case CellType.String:
-                    return cell.StringCellValue;
-                case CellType.Numeric:
-                    return cell.NumericCellValue;
-                case CellType.Boolean:
-                    return cell.BooleanCellValue;
-            }
-            return "";
+            return HttpStatusCode.Created;
         }
     }
 }
